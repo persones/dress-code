@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
-const server = 'http://localhost:3000';
+const server = `http://localhost:${process.env.PORT || 3000}`;
 
 export default defineConfig({
   root: import.meta.dirname,

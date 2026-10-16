@@ -1,0 +1,57 @@
+provider: open-meteo
+units: fahrenheit             # fahrenheit | celsius, passed to the provider
+timezone: America/Los_Angeles # used for "today/tomorrow" and hourly times
+
+forecastRefreshMinutes: 60    # server → weather API
+clientRefreshMinutes: 5       # page → server (cheap; also catches the 5pm switch-over)
+
+day:
+  startHour: 8                # first hour on the graph
+  endHour: 17                 # last hour on the graph; also the switch-over to "tomorrow"
+
+# TODO: replace with your real locations (lat/lon is what Open-Meteo uses)
+locations:
+  home:
+    label: Home / School
+    zip: "94530"
+    lat: 37.75
+    lon: -122.41
+  office:
+    label: Downtown
+    zip: "94111"
+    lat: 37.79
+    lon: -122.39
+
+# An item is shown when all the conditions it specifies hold (bounds inclusive):
+#   minTemp <= day max temp <= maxTemp, and day rain chance >= minRainChance
+clothes:
+  - name: winter coat
+    maxTemp: 45
+    image: winter_coat.svg
+  - name: sweater
+    minTemp: 46
+    maxTemp: 56
+    image: sweater.svg
+  - name: light jacket
+    minTemp: 57
+    maxTemp: 60
+    image: light_jacket.svg
+  - name: long sleeve shirt
+    minTemp: 46
+    maxTemp: 64
+    image: long_sleeve_shirt.svg
+  - name: t-shirt
+    minTemp: 61
+    image: tshirt.svg
+  - name: long pants
+    maxTemp: 74
+    image: long_pants.svg
+  - name: shorts
+    minTemp: 75
+    image: shorts.svg
+  - name: raincoat
+    minRainChance: 40
+    image: raincoat.svg
+  - name: umbrella
+    minRainChance: 60
+    image: umbrella.svg
